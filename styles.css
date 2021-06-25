@@ -1,0 +1,72 @@
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 3em;
+	font-family: sans-serif;
+	font-weight: bold;
+	background: white;
+}
+
+#button {
+	padding: 20px;
+	border-radius: 30px;
+	background: white;
+	border: 3px solid black;
+	cursor: pointer;
+	opacity: 0.5;
+	transition: opacity 0.5s;
+}
+
+#button:hover {
+	opacity: 0.75;
+}
+
+#button:active {
+	transition: initial;
+	opacity: 1;
+}
+
+#temp {
+	font-family: monospace;
+}
+
+#volume-input {
+	margin: 1em 0;
+	font-size: 0.5em;
+	display: flex;
+	width: 400px;
+	align-items: center;
+	justify-content: space-around;
+}
+
+body[muted] #volume-input-inner {
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+#mute-unmute::after {
+	width: 1em;
+	display: block;
+	content: "🔊";
+}
+
+body[muted] #mute-unmute::after {
+	content: "🔈";
+}
+
+body[data-state="START"] #state::after { content: "START"; }
+body[data-state="WORKING"] #state::after { content: "Work time..."; }
+body[data-state="END-WORKING"] #state::after { content: "End of work"; }
+body[data-state="BREAK"] #state::after { content: "Break time..."; }
+body[data-state="END-BREAK"] #state::after { content: "End of break"; }
+body[data-state="LONG-BREAK"] #state::after { content: "Long break time..."; }
+body[data-state="LONG-END-BREAK"] #state::after { content: "End of long break"; }
+body[data-state="END"] #state::after { content: "END"; }
+
+body[data-state="WORKING"] { background: #ffa0a0; }
+body[data-state="END-WORKING"] { background: #ff5050; }
+body[data-state="BREAK"] { background: #a0a0ff; }
+body[data-state="END-BREAK"] { background: #5050ff; }
+body[data-state="LONG-BREAK"] { background: #a0a0ff; }
+body[data-state="END-LONG-BREAK"] { background: #5050ff; }

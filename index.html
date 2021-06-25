@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Pomodoro temporizer</title>
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body data-state="START">
+	<p id="state"></p>
+	<p id="temp">00:00:00</p>
+	<div id="button">START</div>
+	<div id="volume-input">
+		<span>VOLUME: </span>
+		<input id="volume-input-inner" type="range" value="10">
+		<span id="mute-unmute"></span>
+	</div>
+	<script type="text/javascript" src="./lib.js"></script>
+	<script type="text/javascript" src="./index.js"></script>
+</body>
+</html>
