@@ -17,16 +17,21 @@ const tLongBreak = 25 * 60;
 
 
 let body = document.getElementsByTagName("body")[0];
-let button = document.getElementById("button");
+let startButton = document.getElementById("start-button");
 let tempText = document.getElementById("temp");
 let stateText = document.getElementById("state");
 let volumeInput = document.getElementById("volume-input-inner");
 let muteInput = document.getElementById("mute-unmute");
+let volumeTest = document.getElementById("volume-test");
 
 let beepControl = new BeepControl(2, volumeInput.value * 0.2, 500, 125, 1000);
 
 volumeInput.addEventListener("change", () => {
 	beepControl.vol = volumeInput.value * 0.2;
+});
+
+volumeTest.addEventListener("click", () => {
+	beepControl.beepOnce();
 });
 
 muteInput.addEventListener("click", () => {
@@ -59,7 +64,7 @@ function setTemp(time) {
 	return temporizer(time, s => tempText.innerHTML = s);
 }
 
-button.addEventListener("click", async () => {
+startButton.addEventListener("click", async () => {
 	beepControl.stop();
 	if (["START", "END-BREAK", "END-LONG-BREAK"].includes(state.name)) {
 		setState("WORKING");

@@ -45,7 +45,7 @@ I've decided not to make an Electron app version because this app doesn't intera
 Among the features I'm thinking about adding to this project are:
 
 * [X] Volume control
-* [ ] Volume checking
+* [X] Volume checking
 * [ ] Pause
 * [X] Mute the alarm
 * [ ] Determine previously:
