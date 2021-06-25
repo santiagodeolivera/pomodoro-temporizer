@@ -44,9 +44,9 @@ I've decided not to make an Electron app version because this app doesn't intera
 
 Among the features I'm thinking about adding to this project are:
 
-* Volume control
-* Pause
-* Mute the alarm
-* Determine previously:
-	* Number of pomodoros per block and
-	* Number of blocks until the end of the program
+* [X] Volume control
+* [] Pause
+* [X] Mute the alarm
+* [] Determine previously:
+	* [] Number of pomodoros per block and
+	* [] Number of blocks until the end of the program
