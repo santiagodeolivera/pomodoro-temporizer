@@ -1,4 +1,4 @@
-let a = new AudioContext();
+let audioContext = new AudioContext();
 
 // Returns a promise which resolves after waiting a certain amount of time
 function wait(time) {
@@ -8,20 +8,20 @@ function wait(time) {
 }
 
 // Returns a promise which resolves after beeping once
-// Based on code found in https://stackoverflow.com/questions/35497243/how-to-make-a-short-beep-in-javascript-that-can-be-called-repeatedly-on-a-page
+// Based on code found in https://stackoverflow.com/questions/35497243/how-to-make-a-short-beep-in-javascript-that-can-be-called-repeatedly-on-a-page, by user NVRM
 // Changes were made, such as the use of the wait function
 function beep(vol, freq, duration) {
- 	v = a.createOscillator();
- 	u = a.createGain();
-	v.connect(u);
-	v.frequency.value = freq;
-	v.type = "square";
-	u.connect(a.destination);
-	u.gain.value = vol * 0.01;
-	let start = a.currentTime;
+ 	let oscillator = audioContext.createOscillator();
+ 	let gain = audioContext.createGain();
+	oscillator.connect(gain);
+	oscillator.frequency.value = freq;
+	oscillator.type = "square";
+	gain.connect(audioContext.destination);
+	gain.gain.value = vol * 0.01;
+	let start = audioContext.currentTime;
 	let end = start + duration * 0.001;
-	v.start(start);
-	v.stop(end);
+	oscillator.start(start);
+	oscillator.stop(end);
 	return wait(duration);
 };
 
