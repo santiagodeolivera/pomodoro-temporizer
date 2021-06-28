@@ -12,11 +12,18 @@
 	<p id="temp">00:00:00</p>
 	<div id="start-button" class="button">START</div>
 	<div id="volume-input">
-		<span>VOLUME: </span>
+		<label for="volume-input-inner">VOLUME: </label>
 		<input id="volume-input-inner" type="range" value="10">
 		<span id="mute-unmute" class="button"></span>
 	</div>
 	<div id="volume-test" class="button">TEST VOLUME</div>
+	<div id="time-management-input">
+		<label for="max-rounds">Rounds per block: </label>
+		<input id="max-rounds" type="number" value="4"> <br>
+		<label for="max-blocks">Total blocks: </label>
+		<input id="max-blocks" type="number" value="5">
+	</div>
+
 	<script type="text/javascript" src="./lib.js"></script>
 	<script type="text/javascript" src="./index.js"></script>
 </body>

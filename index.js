@@ -1,8 +1,8 @@
 // Number of pomodoros in a block
-const maxRounds = 4;
+let maxRounds = 4;
 
 // Number of blocks
-const maxBigRounds = 5;
+let maxBlocks = 5;
 
 // Amount of time for a work period (in seconds)
 const tWork = 25 * 60;
@@ -23,23 +23,48 @@ let stateText = document.getElementById("state");
 let volumeInput = document.getElementById("volume-input-inner");
 let muteInput = document.getElementById("mute-unmute");
 let volumeTest = document.getElementById("volume-test");
+let maxRoundsInput = document.getElementById("max-rounds");
+let maxBlocksInput = document.getElementById("max-blocks");
 
 let beepControl = new BeepControl(2, volumeInput.value * 0.2, 500, 125, 1000);
 
-volumeInput.addEventListener("change", () => {
+function updateVolume() {
 	beepControl.vol = volumeInput.value * 0.2;
-});
+}
+volumeInput.addEventListener("change", updateVolume);
+updateVolume();
 
 volumeTest.addEventListener("click", () => {
 	beepControl.beepOnce();
 });
 
+function updateMaxRounds() {
+	let v = maxRoundsInput.value;
+	if (v == "") {
+		maxRoundsInput.value = 4;
+		maxRounds = 4;
+	} else maxRounds = parseInt(v);
+}
+maxRoundsInput.addEventListener("change", updateMaxRounds);
+updateMaxRounds();
+
+function updateMaxBlocks() {
+	let v = maxBlocksInput.value;
+	if (v == "") {
+		maxBlocksInput.value = 5;
+		maxBlocks = 5;
+	} else maxBlocks = parseInt(v);
+}
+maxBlocksInput.addEventListener("change", updateMaxBlocks);
+updateMaxBlocks();
+
+
 muteInput.addEventListener("click", () => {
-	if (body.hasAttribute("muted")) {
-		body.removeAttribute("muted");
+	if (body.hasAttribute("data-muted")) {
+		body.removeAttribute("data-muted");
 		beepControl.vol = volumeInput.value * 0.2;
 	} else {
-		body.setAttribute("muted", "");
+		body.setAttribute("data-muted", "");
 		beepControl.vol = 0;
 	}
 });
@@ -66,6 +91,7 @@ function setTemp(time) {
 
 startButton.addEventListener("click", async () => {
 	beepControl.stop();
+
 	if (["START", "END-BREAK", "END-LONG-BREAK"].includes(state.name)) {
 		setState("WORKING");
 		await setTemp(tWork);
@@ -77,7 +103,7 @@ startButton.addEventListener("click", async () => {
 			await setTemp(tBreak);
 			setState("END-BREAK", { rounds: state.rounds + 1 });
 			beepControl.start();
-		} else if (state.bigRounds < maxBigRounds) {
+		} else if (state.bigRounds < maxBlocks) {
 			setState("LONG-BREAK", { rounds: 1 });
 			await setTemp(tLongBreak);
 			setState("END-LONG-BREAK", { bigRounds: state.bigRounds + 1 });

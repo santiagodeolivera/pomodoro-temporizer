@@ -2,7 +2,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	font-size: 3em;
 	font-family: sans-serif;
 	font-weight: bold;
 	background: white;
@@ -11,7 +10,7 @@ body {
 #start-button {
 	padding: 20px;
 	border-radius: 30px;
-	background: white;
+	font-size: 3em;
 	border: 3px solid black;
 }
 
@@ -19,6 +18,10 @@ body {
 	opacity: 0.5;
 	transition: opacity 0.5s;
 	cursor: pointer;
+}
+
+div.button {
+	background: white;
 }
 
 .button:hover {
@@ -32,25 +35,29 @@ body {
 
 #temp {
 	font-family: monospace;
+	font-size: 3em;
 }
 
 #volume-input {
-	margin: 1.5em 0 0 0;
-	font-size: 0.5em;
+	margin: 0;
+	margin-top: 1.5em;
+	font-size: 1.5em;
 	display: flex;
 	width: 400px;
 	align-items: center;
 	justify-content: space-around;
 }
 
-body[muted] #volume-input-inner {
+body[data-muted] #volume-input-inner, #time-management-input {
 	pointer-events: none;
 	opacity: 0.5;
 }
 
 #volume-test {
-	font-size: 0.5em;
+	font-size: 1.5em;
 	padding: 5px;
+	margin: 0;
+	margin-bottom: 1.5em;
 	border-radius: 10px;
 	border: 1px solid black;
 }
@@ -64,8 +71,22 @@ body[muted] #volume-input-inner {
 	border-radius: 50%;
 }
 
-body[muted] #mute-unmute::after {
+body[data-muted] #mute-unmute::after {
 	content: "🔈";
+}
+
+#time-management-input {
+	text-align: right;
+}
+
+body[data-state="START"] #time-management-input {
+	pointer-events: initial;
+	opacity: 1;
+}
+
+input[type="number"] {
+	width: 4em;
+	height: 2em;
 }
 
 body[data-state="START"] #state::after { content: "START"; }
@@ -74,7 +95,7 @@ body[data-state="END-WORKING"] #state::after { content: "End of work"; }
 body[data-state="BREAK"] #state::after { content: "Break time..."; }
 body[data-state="END-BREAK"] #state::after { content: "End of break"; }
 body[data-state="LONG-BREAK"] #state::after { content: "Long break time..."; }
-body[data-state="LONG-END-BREAK"] #state::after { content: "End of long break"; }
+body[data-state="END-LONG-BREAK"] #state::after { content: "End of long break"; }
 body[data-state="END"] #state::after { content: "END"; }
 
 body[data-state="WORKING"] { background: #ffa0a0; }
@@ -83,3 +104,7 @@ body[data-state="BREAK"] { background: #a0a0ff; }
 body[data-state="END-BREAK"] { background: #5050ff; }
 body[data-state="LONG-BREAK"] { background: #a0a0ff; }
 body[data-state="END-LONG-BREAK"] { background: #5050ff; }
+
+#state {
+	font-size: 3em;
+}
