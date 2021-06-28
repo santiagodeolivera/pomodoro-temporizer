@@ -34,7 +34,7 @@ The current version works with 5 of the aforementioned "blocks" until it stops, 
 
 ## Mobile usage
 
-This application hasn't been tested on mobile phones (mainly because they may not encourage software installation via zip packages), but I'm looking forward to making an android version if people so wish (although I lack experience in mobile development, so that may take a long while).
+This application hasn't been tested on mobile phones (mainly because they may not encourage software installation via zip packages), but I'm looking forward to making an android version if people so wish (although I have no experience in mobile development, so that may take a very long while).
 
 ## Desktop app development
 
