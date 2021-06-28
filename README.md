@@ -10,18 +10,18 @@ First, open the application by opening the file `index.html` in the navigator of
 > Note: If preferred, you can create a shortcut or symbolic link to the mentioned file.
 
 Once the application has started, the navigator you chose should have opened a window like this:
-![Screenshot of the start state](https://raw.githubusercontent.com/santiagodeolivera/pomodoro-temporizer/main/README-images/screenshot-start.jpg)
+![Screenshot of the start state](https://raw.githubusercontent.com/santiagodeolivera/pomodoro-temporizer/main/README-images/screenshot-start.png)
 
 If that's the case, click the "START" button to start the temporizer. It will start a countdown for a period of 25 minutes (a pomodoro of work, if you would).<br>
-![Screenshot of the work state](https://raw.githubusercontent.com/santiagodeolivera/pomodoro-temporizer/main/README-images/screenshot-work.jpg)
+![Screenshot of the work state](https://raw.githubusercontent.com/santiagodeolivera/pomodoro-temporizer/main/README-images/screenshot-work.png)
 
 After that, it will sound an alarm, indicating the time is up. Click the "START" button again to begin a break period of 5 minutes.<br>
-![Screenshot of the end of work state](https://raw.githubusercontent.com/santiagodeolivera/pomodoro-temporizer/main/README-images/screenshot-end-work.jpg)
-![Screenshot of the break state](https://raw.githubusercontent.com/santiagodeolivera/pomodoro-temporizer/main/README-images/screenshot-break.jpg)
+![Screenshot of the end of work state](https://raw.githubusercontent.com/santiagodeolivera/pomodoro-temporizer/main/README-images/screenshot-end-work.png)
+![Screenshot of the break state](https://raw.githubusercontent.com/santiagodeolivera/pomodoro-temporizer/main/README-images/screenshot-break.png)
 
 Then, it will sound an alarm, indicating the end of the break, and so on...
 
-![Screenshot of the end of break state](https://raw.githubusercontent.com/santiagodeolivera/pomodoro-temporizer/main/README-images/screenshot-end-break.jpg)
+![Screenshot of the end of break state](https://raw.githubusercontent.com/santiagodeolivera/pomodoro-temporizer/main/README-images/screenshot-end-break.png)
 
 The precise distribution of time this application works with is the following:
 * Repeat 5 times:
