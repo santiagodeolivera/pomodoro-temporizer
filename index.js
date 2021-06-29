@@ -16,7 +16,7 @@ const tLongBreak = 25 * 60;
 
 
 
-let body = document.getElementsByTagName("body")[0];
+let body = document.body;
 let startButton = document.getElementById("start-button");
 let tempText = document.getElementById("temp");
 let stateText = document.getElementById("state");
