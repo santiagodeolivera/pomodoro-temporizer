@@ -24,19 +24,19 @@ Then, it will sound an alarm, indicating the end of the break, and so on...
 ![Screenshot of the end of break state](https://raw.githubusercontent.com/santiagodeolivera/pomodoro-temporizer/main/README-images/screenshot-end-break.png)
 
 The precise distribution of time this application works with is the following:
-* Repeat 5 times:
-	* Repeat 4 times:
+* Repeat for each pomodoro block (that's the name I gave to a set of pomodoros between long breaks):
+	* Repeat for each pomodoro:
 		* Pomodoro of work of 25 minutes
 		* Break of 5 minutes (except for the last pomodoro)
-	* Long break of 25 minutes (except for the last "pomodoro block")
+	* Long break of 25 minutes (except for the last pomodoro block)
 
-The current version works with 5 of the aforementioned "blocks" until it stops, but that may change in the future.
+The program has 5 pomodoro blocks, with 4 pomodoros each, but it can be changed manually before starting the timer.
 
 ## Mobile usage
 
-This application hasn't been tested on mobile phones (mainly because they may not encourage software installation via zip packages), but I'm looking forward to making an android version if people so wish (although I have no experience in mobile development, so that may take a very long while).
+This application hasn't been tested on mobile phones (mainly because they may not encourage software installation via zip packages), but I might be looking forward to making an android version if people so wish (although I have no experience in mobile development, so that may take a very long while).
 
-## Desktop app development
+## Desktop app development (Electron)
 
 I've decided not to make an Electron app version because this app doesn't interact with the file system or any other feature Electron brings.
 
