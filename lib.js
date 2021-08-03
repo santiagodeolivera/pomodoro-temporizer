@@ -88,7 +88,7 @@ class BeepControl {
 	}
 }
 
-// Creates a temporizer which executes a function every time a second passes (with a string showing the time remaining as an argument)
+// Creates a temporizer which executes a function every time a second passes (with a string showing the remaining time as an argument)
 async function temporizer(time, f) {
 	while(time > 0) {
 		let secs = time % 60;
