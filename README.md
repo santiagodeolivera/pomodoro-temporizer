@@ -10,18 +10,18 @@ First, open the application by opening the file `index.html` in the navigator of
 > Note: If preferred, you can create a shortcut or symbolic link to the mentioned file.
 
 Once the application has started, the navigator you chose should have opened a window like this:
-![Screenshot of the start state](/README-images/screenshot-start.png)
+![Screenshot of the start state](/Assets/start-screenshot.png)
 
 If that's the case, click the "START" button to start the temporizer. It will start a countdown for a period of 25 minutes (a pomodoro of work, if you would).<br>
-![Screenshot of the work state](/README-images/screenshot-work.png)
+![Screenshot of the work state](/Assets/work-screenshot.png)
 
 After that, it will sound an alarm, indicating the time is up. Click the "START" button again to begin a break period of 5 minutes.<br>
-![Screenshot of the end of work state](/README-images/screenshot-end-work.png)
-![Screenshot of the break state](/README-images/screenshot-break.png)
+![Screenshot of the end of work state](/Assets/end-work-screenshot.png)
+![Screenshot of the break state](/Assets/break-screenshot.png)
 
 Then, it will sound an alarm, indicating the end of the break, and so on...
 
-![Screenshot of the end of break state](/README-images/screenshot-end-break.png)
+![Screenshot of the end of break state](/Assets/end-break-screenshot.png)
 
 The precise distribution of time this application works with is the following:
 * Repeat for each pomodoro block (that's the name I gave to a set of pomodoros between long breaks):
