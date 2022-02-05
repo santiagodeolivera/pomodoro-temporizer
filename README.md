@@ -38,7 +38,7 @@ This application hasn't been tested on mobile phones (mainly because they may no
 
 ## Desktop app development (Electron)
 
-I've decided not to make an Electron app version because this app doesn't interact with the file system or any other feature Electron brings.
+I've decided not to make an Electron app version because this app wouldn't benefit from access to the file system or any other feature Electron has that web pages don't.
 
 ## Potential features
 
