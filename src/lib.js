@@ -7,9 +7,9 @@ function wait(time) {
 	});
 }
 
-// Returns a promise which resolves after beeping once
+// Returns a promise which resolves after beeping once.
 // Based on code found in https://stackoverflow.com/questions/35497243/how-to-make-a-short-beep-in-javascript-that-can-be-called-repeatedly-on-a-page, by user NVRM
-// Changes were made, such as the use of the wait function
+// Changes were made, such as the use of the wait function.
 function beep(vol, freq, duration) {
  	let oscillator = audioContext.createOscillator();
  	let gain = audioContext.createGain();
@@ -88,21 +88,65 @@ class BeepControl {
 	}
 }
 
+function hourString(time) {
+	let secs = time % 60;
+	let temp_mins = Math.floor(time / 60);
+	let mins = temp_mins % 60;
+	let hours = Math.floor(temp_mins / 60);
+
+	secs = secs.toString().padStart(2, "0");
+	mins = mins.toString().padStart(2, "0");
+	hours = hours.toString().padStart(2, "0");
+	return `${hours}:${mins}:${secs}`;
+}
+
+// This class represents a temporizer with pause functionality.
+class Temporizer {
+	constructor(time, func, endFunc) {
+		this.time = time;
+		this.func = func;
+		this.endFunc = endFunc;
+		this.state = 0;
+		this.running = 0;
+		this.thread = null;
+	}
+
+	async createThread() {
+		let running = this.running;
+		await wait(1000);
+		if(this.state != 1 || this.running != running) return;
+		this.time--;
+		this.func(hourString(this.time));
+		if(this.time <= 0) {
+			this.endFunc();
+		} else {
+			this.thread = this.createThread();
+		}
+	}
+
+	start() {
+		this.func(hourString(this.time));
+		this.running++;
+		this.state = 1;
+		this.thread = this.createThread();
+	}
+
+	stop() {
+		this.state = 0;
+		this.thread = null;
+	}
+}
+
 // Creates a temporizer which executes a function every time a second passes (with a string showing the remaining time as an argument)
+/*
 async function temporizer(time, f) {
 	while(time > 0) {
-		let secs = time % 60;
-		let temp_mins = Math.floor(time / 60);
-		let mins = temp_mins % 60;
-		let hours = Math.floor(temp_mins / 60);
-
-		secs = secs.toString().padStart(2, "0");
-		mins = mins.toString().padStart(2, "0");
-		hours = hours.toString().padStart(2, "0");
-		let str = `${hours}:${mins}:${secs}`;
+		let str = hourString(time);
 		f(str);
 		await wait(1000);
 		time--;
 	}
 	f("00:00:00");
 }
+*/
+

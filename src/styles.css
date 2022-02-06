@@ -9,7 +9,7 @@ body {
 
 #start-button {
 	padding: 20px;
-	border-radius: 30px;
+	border-radius: 60px;
 	font-size: 3em;
 	border: 3px solid black;
 }
@@ -36,6 +36,30 @@ div.button {
 #temp {
 	font-family: monospace;
 	font-size: 3em;
+}
+
+#start-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 50%;
+}
+
+#pause-button {
+	padding: 10px 20px;
+	border-radius: 60px;
+	font-size: 3em;
+	border: 3px solid black;
+	width: 1em;
+	height: 1.5em;
+}
+
+#pause-button::after {
+	content: "\25b6";
+}
+
+body[data-paused] #pause-button::after {
+	content: "\23f8";
 }
 
 #volume-input {
@@ -65,14 +89,14 @@ body[data-muted] #volume-input-inner, #time-management-input {
 #mute-unmute::after {
 	width: 1.4em;
 	display: block;
-	content: "🔊";
+	content: "\1f50a";
 	padding: 5px;
 	border: 1px solid black;
 	border-radius: 50%;
 }
 
 body[data-muted] #mute-unmute::after {
-	content: "🔈";
+	content: "\1f507";
 }
 
 #time-management-input {

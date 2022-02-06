@@ -18,6 +18,7 @@ const tLongBreak = 25 * 60;
 
 let body = document.body;
 let startButton = document.getElementById("start-button");
+let pauseButton = document.getElementById("pause-button");
 let tempText = document.getElementById("temp");
 let stateText = document.getElementById("state");
 let volumeInput = document.getElementById("volume-input-inner");
@@ -27,6 +28,22 @@ let maxRoundsInput = document.getElementById("max-rounds");
 let maxBlocksInput = document.getElementById("max-blocks");
 
 let beepControl = new BeepControl(2, volumeInput.value * 0.2, 500, 125, 1000);
+let temporizer = null;
+let temporizerPaused = false;
+
+pauseButton.addEventListener("click", () => {
+	if(temporizer) {
+		if (temporizerPaused) {
+			temporizer.start();
+			temporizerPaused = false;
+			body.removeAttribute("data-paused");
+		} else {
+			temporizer.stop();
+			temporizerPaused = true;
+			body.setAttribute("data-paused", "");
+		}
+	}
+});
 
 function updateVolume() {
 	beepControl.vol = volumeInput.value * 0.2;
@@ -85,8 +102,14 @@ setState("START", {
 	bigRounds: 1
 });
 
-function setTemp(time) {
-	return temporizer(time, s => tempText.innerHTML = s);
+function setTemp(time, ...nextState) {
+	temporizer = new Temporizer(time, s => tempText.innerHTML = s, () => {
+		setState(...nextState);
+		beepControl.start();
+	});
+	temporizerPaused = false;
+	temporizer.start();
+	body.removeAttribute("data-paused");
 }
 
 startButton.addEventListener("click", async () => {
@@ -94,20 +117,14 @@ startButton.addEventListener("click", async () => {
 
 	if (["START", "END-BREAK", "END-LONG-BREAK"].includes(state.name)) {
 		setState("WORKING");
-		await setTemp(tWork);
-		setState("END-WORKING");
-		beepControl.start();
+		setTemp(tWork, "END-WORKING");
 	} else if (state.name == "END-WORKING") {
 		if (state.rounds < maxRounds) {
 			setState("BREAK");
-			await setTemp(tBreak);
-			setState("END-BREAK", { rounds: state.rounds + 1 });
-			beepControl.start();
+			await setTemp(tBreak, "END-BREAK", { rounds: state.rounds + 1 });
 		} else if (state.bigRounds < maxBlocks) {
 			setState("LONG-BREAK", { rounds: 1 });
-			await setTemp(tLongBreak);
-			setState("END-LONG-BREAK", { bigRounds: state.bigRounds + 1 });
-			beepControl.start();
+			await setTemp(tLongBreak, "END-LONG-BREAK", { bigRounds: state.bigRounds + 1 });
 		} else {
 			setState("END");
 		}
