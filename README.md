@@ -46,8 +46,9 @@ Among the features I'm thinking about adding to this project are:
 
 * [X] Volume control
 * [X] Volume checking
-* [ ] Pause
+* [X] Pause
 * [X] Mute the alarm
 * [X] Determine previously:
 	* [X] Number of pomodoros per block and
 	* [X] Number of blocks until the end of the program
+
